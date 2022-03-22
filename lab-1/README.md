@@ -1,9 +1,7 @@
 Infrastructure in Pulumi is organized into _projects_. In the Pulumi ecosystem,
 a project represents a Pulumi _program_ that, when run, declares the desired
 infrastructure for Pulumi to manage. The program has corresponding _stacks_, or
-isolated, independently configurable instances of your Pulumi program. We'll
-talk more about stacks later in the [Building with
-Pulumi]({{< relref "/learn/building-with-pulumi" >}}) pathway.
+isolated, independently configurable instances of your Pulumi program. 
 
 ## Create a directory
 
@@ -151,21 +149,6 @@ infrastructure using a general-purpose programming language. In this case, we're
 using Python, so our main file is `__main__.py` Inside your program's
 `__main__ py`file, use any editor to add the following code:
 
-```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as docker from "@pulumi/docker";
-
-const stack = pulumi.getStack();
-
-const backendImageName = "backend";
-const backend = new docker.Image("backend", {
-    build: {
-        context: `${process.cwd()}/app/backend`,
-    },
-    imageName: `${backendImageName}:${stack}`,
-    skipPush: true,
-});
-```
 
 ```python
 import os
@@ -217,7 +200,7 @@ some of those outputs are provided by the provider after everything has loaded,
 booted, or otherwise has come online. More on outputs later.
 
 In our case here, the Docker
-[`Image`]({{< relref "/registry/packages/docker/api-docs/image" >}}) resource
+[`Image`](https://www.pulumi.com/registry/packages/docker/api-docs/image/) resource
 takes the following inputs:
 
 - `name`: a name for the resource we are creating
@@ -245,7 +228,7 @@ frontend = docker.Image("frontend",
 
 We build the frontend client the same way we built the backend. However, we are
 going to use the official MongoDB image from Docker Hub, so we use the
-[`RemoteImage`]({{< relref "/registry/packages/docker/api-docs/remoteimage" >}})
+[`RemoteImage`](https://www.pulumi.com/registry/packages/docker/api-docs/remoteimage/)
 resource.
 
 ```python
