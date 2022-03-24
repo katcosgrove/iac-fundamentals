@@ -71,7 +71,6 @@ data_seed_container = docker.Container("data_seed_container",
                                        image=mongo_image.repo_digest,
                                        name="data_seed",
                                        must_run=False,
-                                       rm=True,
                                        opts=pulumi.ResourceOptions(depends_on=[backend_container]),
                                        mounts=[docker.ContainerMountArgs(
                                            target="/home/products.json",
